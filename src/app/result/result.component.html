@@ -1,0 +1,57 @@
+<div class="result-wrapper">
+  <table class="line">
+    <tbody>
+      <tr>
+        <td class="ttd">
+          <div align="right">
+            <img src="mseclogo.png" width="150" height="150" />
+          </div>
+        </td>
+        <td class="ttd center-text">
+          <p style="color:blue; font-weight:bold;">MEPCO SCHLENK ENGINEERING COLLEGE (Autonomous), SIVAKASI</p>
+          <p style="color:blue;">Office of the Controller of Examinations</p>
+          <p style="color:red;">End Semester Examinations Results - DECEMBER 2024</p>
+        </td>
+        <td class="ttd">
+          <div align="right">
+            <img src="sobana.png" width="150" height="150" />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="student" class="student-details">
+    <h2>Welcome, {{ student.name }}</h2>
+    <p><strong>Register No:</strong> {{ student.regNo }}</p>
+    <p><strong>CGPA:</strong> {{ student.cgpa }}</p>
+    <p><strong>Total Credits:</strong> {{ student.totalCredits }}</p>
+    <p><strong>Credits Earned:</strong> {{ student.totalCreditsEarned }}</p>
+
+    <h3>Subjects:</h3>
+    <table border="1" class="result-table">
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Credits</th>
+        <th>Internal</th>
+        <th>External</th>
+        <th>Grade</th>
+        <th>Result</th>
+      </tr>
+      <tr *ngFor="let course of student.results">
+        <td>{{ course.code }}</td>
+        <td>{{ course.name }}</td>
+        <td>{{ course.credits }}</td>
+        <td>{{ course.internal }}</td>
+        <td>{{ course.external }}</td>
+        <td>{{ course.grade }}</td>
+        <td [ngClass]="{ 'PASS': course.result === 'PASS', 'FAIL': course.result === 'FAIL' }">
+          {{ course.result }}
+        </td>
+        
+        
+      </tr>
+    </table>
+  </div>
+</div>
